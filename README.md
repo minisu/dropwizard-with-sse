@@ -1,4 +1,4 @@
-This is a example project using [Dropwizard](github.com/codahale/dropwizard) with [Server-sent Events support](https://github.com/jetty-project/jetty-eventsource-servlet)
+This is a example project using [Dropwizard](github.com/codahale/dropwizard) (version 0.7.0) with [Server-sent Events support](https://github.com/jetty-project/jetty-eventsource-servlet)
 
 __Usage__
 
