@@ -7,8 +7,7 @@ __Usage__
   
 ```
 $ mvn clean package
-$ java -jar target/dropwizard-with-sse-0.0.1-SNAPSHOT.jar server \
-  src/test/resources/config.yaml
+$ java -jar target/dropwizard-with-sse-0.0.1-SNAPSHOT.jar server etc/config.yml
 ```
 
 * Open a new terminal and execute:
