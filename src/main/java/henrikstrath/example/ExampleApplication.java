@@ -1,4 +1,4 @@
-package org.ahedstrom.example;
+package henrikstrath.example;
 
 import io.dropwizard.Application;
 import io.dropwizard.Configuration;

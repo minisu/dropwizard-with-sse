@@ -1,4 +1,4 @@
-package org.ahedstrom.example;
+package henrikstrath.example;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class SseEventSource implements EventSource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SseEventSource.class);
+    private static final Logger log = LoggerFactory.getLogger(SseEventSource.class);
     
     private Emitter emitter;
     private String id;
@@ -21,19 +21,24 @@ public class SseEventSource implements EventSource {
     }
     @Override
     public void onOpen(Emitter emitter) throws IOException {
-        LOG.info("onOpen");
+        log.info("onOpen");
         this.emitter = emitter;
     }
 
     @Override
     public void onClose() {
-        LOG.info("onClose");
-        EventPublisher.removeListener(this);
+        log.info("onClose");
+        //EventPublisher.removeListener(this);
     }
 
-    public void emitEvent(String dataToSend) throws IOException {
-        LOG.info("emitEvent");
-        this.emitter.data(dataToSend);
+    public void pushEvent(String dataToSend)  {
+        log.info("pushEvent");
+        try {
+            this.emitter.data(dataToSend);
+        }
+        catch(IOException e) {
+            log.warn("Failed to push to client ", e);
+        }
     }
     
     @Override

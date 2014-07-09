@@ -1,4 +1,4 @@
-package org.ahedstrom.example;
+package henrikstrath.example;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,7 +12,7 @@ public class Resource {
     @Path("publish")
     @GET
     public Response trigger(@QueryParam("msg") String msg) {
-        EventPublisher.pub(msg);
+        RestSource.INSTANCE.push(msg);
         return Response.ok().build();
     }
   
