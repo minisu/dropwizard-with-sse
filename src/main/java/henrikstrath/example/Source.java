@@ -1,7 +1,10 @@
 package henrikstrath.example;
 
+import static rx.Observable.OnSubscribe;
+
 import rx.Observable;
 import rx.Subscriber;
+import rx.Subscription;
 
 import java.util.Set;
 
@@ -13,11 +16,19 @@ public class Source<T> {
     private final Observable<T> observable;
 
     public Source() {
-        observable = Observable.create(new Observable.OnSubscribe<T>() {
-            @Override
-            public void call(final Subscriber<? super T> subscriber) {
-                subscribers.add(subscriber);
-            }
+        observable = Observable.create((OnSubscribe<T>) (subscriber) -> {
+            subscribers.add(subscriber);
+            subscriber.add(new Subscription() {
+                @Override
+                public void unsubscribe() {
+                    subscribers.remove(subscriber);
+                }
+
+                @Override
+                public boolean isUnsubscribed() {
+                    return !subscribers.contains(subscriber);
+                }
+            });
         });
     }
 

@@ -8,7 +8,6 @@ import org.eclipse.jetty.servlets.EventSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class SseEventSource implements EventSource {
 
     private static final Logger log = LoggerFactory.getLogger(SseEventSource.class);
@@ -19,6 +18,7 @@ public class SseEventSource implements EventSource {
     public SseEventSource() {
         this.id = UUID.randomUUID().toString();
     }
+
     @Override
     public void onOpen(Emitter emitter) throws IOException {
         log.info("onOpen");
@@ -28,7 +28,7 @@ public class SseEventSource implements EventSource {
     @Override
     public void onClose() {
         log.info("onClose");
-        //EventPublisher.removeListener(this);
+        //EventPublisher.removeListener(this); // TODO: Unsubscribe in rxJava
     }
 
     public void pushEvent(String dataToSend)  {

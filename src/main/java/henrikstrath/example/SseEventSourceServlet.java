@@ -1,5 +1,7 @@
 package henrikstrath.example;
 
+import rx.Subscription;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.jetty.servlets.EventSource;
@@ -29,7 +31,7 @@ public class SseEventSourceServlet extends EventSourceServlet {
 
         source.asObservable()
                 .filter(topic::equals)
-                .forEach(eventSource::pushEvent);
+                .subscribe(eventSource::pushEvent);
 
         return eventSource;
     }
