@@ -2,7 +2,7 @@ package henrikstrath.example.filter;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-import henrikstrath.example.Source;
+import henrikstrath.example.rx.Source;
 import rx.Observable;
 import rx.Subscription;
 

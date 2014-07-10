@@ -1,6 +1,6 @@
 package henrikstrath.example;
 
-import rx.Subscription;
+import henrikstrath.example.rx.Source;
 
 import javax.servlet.http.HttpServletRequest;
 

@@ -1,4 +1,4 @@
-package henrikstrath.example;
+package henrikstrath.example.rx;
 
 import static rx.Observable.OnSubscribe;
 
